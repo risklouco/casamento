@@ -63,7 +63,7 @@
       height: 100vh;
       background:
         linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.35), rgba(193,165,123,0.25)),
-        url('https://i.postimg.cc/cLQ2D3CS/BORDAO3.png') center/cover no-repeat;
+        url('https://i.postimg.cc/NfRN6rpz/1.png') center/cover no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -304,14 +304,25 @@
       .hero-date { font-size: 0.85rem; padding: 8px 18px; letter-spacing: 3px; }
     }
 
-    /* Formulário RSVP */
+ /* Formulário RSVP */
 #rsvp iframe {
-  width: 100%;          /* ocupa toda a largura do container */
-  min-height: 1200px;   /* aumenta a altura para mostrar o formulário completo */
-  border: none;         /* remove bordas */
-  border-radius: 12px;  /* cantos arredondados */
+  width: 100%;            /* ocupa toda a largura do container */
+  min-height: 1200px;     /* altura inicial do formulário */
+  max-width: 900px;        /* limite para telas grandes */
+  border: none;            /* remove borda */
+  border-radius: 12px;     /* cantos arredondados */
   box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  display: block;
+  margin: 20px auto;       /* centraliza na tela */
 }
+
+/* Ajuste para telas pequenas */
+@media (max-width: 768px) {
+  #rsvp iframe {
+    min-height: 1400px;   /* aumenta altura para mobile se necessário */
+  }
+}
+
 
   </style>
 </head>
@@ -366,6 +377,7 @@
   <div>
     <h2>Local da Festa</h2>
     <p><strong>07 de fevereiro de 2026</strong></p>
+    <p><strong>12:00 Hrs </strong></p>
     <p>Recanto da Lagoa – Lagoa Santa / MG</p>
     <div class="map-container">
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3712.1304972976776!2d-43.896122300000005!3d-19.658500599999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa67c4c53573ba9%3A0xc7ade2d028bf66e0!2sR.%20U%2C%201445%20-%20Recanto%20da%20Lagoa%2C%20Lagoa%20Santa%20-%20MG!5e0!3m2!1spt-BR!2sbr!5m2!1spt-BR!2sbr" loading="lazy"></iframe>
