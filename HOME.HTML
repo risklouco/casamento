@@ -27,6 +27,7 @@
       font-family: 'Montserrat', sans-serif;
       color: var(--texto);
       line-height: 1.7;
+      background: var(--bege);
     }
 
     /* NAVBAR */
@@ -54,28 +55,22 @@
       color: var(--texto);
     }
 
-    nav a:hover {
-      color: var(--dourado);
-    }
+    nav a:hover { color: var(--dourado); }
 
-    /* HERO PREMIUM */
+    /* HERO */
     .hero {
       position: relative;
       height: 100vh;
       background:
-        linear-gradient(
-          180deg,
-          rgba(0,0,0,0.55),
-          rgba(0,0,0,0.35),
-          rgba(193,165,123,0.25)
-        ),
-        url('https://i.postimg.cc/d3ZBkRd3/bordao2.png') center/cover no-repeat;
+        linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.35), rgba(193,165,123,0.25)),
+        url('https://i.postimg.cc/cLQ2D3CS/BORDAO3.png') center/cover no-repeat;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
       color: white;
       overflow: hidden;
+      padding-top: 220px;
     }
 
     .hero::after {
@@ -90,85 +85,48 @@
     .hero-content {
       position: relative;
       z-index: 2;
-      animation: heroFade 2s ease forwards;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      animation: heroFade 1.8s ease forwards;
+      padding: 0 20px;
+      margin-top: 100px;
     }
 
-    .hero h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3.6rem;
-      letter-spacing: 2px;
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: 2.4rem; letter-spacing: 2px; }
+    .hero-subtitle { margin: 18px 0; font-size: 0.9rem; letter-spacing: 4px; text-transform: uppercase; }
+    .hero-date { display: inline-block; margin-top: 10px; font-size: 0.9rem; letter-spacing: 5px; padding: 10px 22px; border: 1px solid rgba(255,255,255,0.4); border-radius: 40px; }
+
+    @keyframes heroFade {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .hero-subtitle {
-      margin: 18px 0;
-      font-size: 0.9rem;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-    }
-
-    .hero-date {
-      display: inline-block;
-      margin-top: 10px;
-      font-size: 0.9rem;
-      letter-spacing: 5px;
-      padding: 12px 28px;
-      border: 1px solid rgba(255,255,255,0.4);
-      border-radius: 40px;
-    }
-
-    /* PARTICULAS HERO */
+    /* PARTICULAS */
     .particles span {
       position: absolute;
       width: 6px;
       height: 6px;
-      background: rgba(255,255,255,0.25);
+      background: rgba(255,255,255,0.6);
       border-radius: 50%;
-      animation: float 18s linear infinite;
+      animation: float 12s linear infinite;
+      bottom: -10px; 
     }
 
-    .particles span:nth-child(odd) {
-      background: rgba(193,165,123,0.35);
-    }
+    .particles span:nth-child(odd) { background: rgba(223, 149, 38, 0.7); }
 
     @keyframes float {
-      from {
-        transform: translateY(100vh) scale(0.6);
-        opacity: 0;
-      }
-      to {
-        transform: translateY(-10vh) scale(1);
-        opacity: 1;
-      }
-    }
-
-    @keyframes heroFade {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+    0% { transform: translateY(0) scale(0.5); opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { transform: translateY(-110vh) scale(1); opacity: 0; }
+}
 
     /* SEÇÕES */
-    section {
-      padding: 100px 20px;
-      max-width: 900px;
-      margin: auto;
-      text-align: center;
-    }
-
-    section.light {
-      background: var(--bege);
-      max-width: none;
-    }
-
-    section.light > div {
-      max-width: 900px;
-      margin: auto;
-    }
+    section { padding: 100px 20px; max-width: 900px; margin: auto; text-align: center; }
+    section.light { background: var(--bege); max-width: none; }
+    section.light > div { max-width: 900px; margin: auto; }
 
     h2 {
       font-family: 'Cinzel', serif;
@@ -188,11 +146,11 @@
       border-radius: 2px;
     }
 
-    /* COUNTDOWN PREMIUM */
+    /* COUNTDOWN */
     .countdown-section {
       background: linear-gradient(160deg, rgba(193,165,123,0.05), rgba(255,255,255,0.05));
       padding: 80px 20px;
-      position: relative; /* necessário para posicionar foguetes */
+      position: relative;
       overflow: hidden;
     }
 
@@ -208,63 +166,29 @@
     }
 
     .rocket::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-bottom: 10px solid var(--dourado); /* ponta do foguete */
-  top: -10px;
-  left: 0;
-}
-
-    .rocket.left {
-  left: 10px;
-  animation-delay: 0s;
-}
-
-.rocket.right {
-  right: 10px;
-  animation-delay: 1.5s;
-}
-
-/* Foguete subindo e "explodindo" */
-@keyframes launch {
-  0% {
-    bottom: 0;
-    transform: scaleY(1);
-    opacity: 1;
-  }
-  70% {
-    bottom: 200px; /* altura do voo */
-    transform: scaleY(1.2);
-  }
-  80% {
-    transform: scaleY(0.8) scaleX(1.5);
-  }
-  100% {
-    bottom: 200px;
-    transform: scale(0);
-    opacity: 0;
-    box-shadow: 0 0 20px 10px var(--dourado);
-  }
-}
-
-    .countdown-container h2 {
-       font-family: 'Cinzel', serif;
-      font-size: 2.4rem;
-      color: var(--texto);
-      margin-bottom: 40px;
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-left: 5px solid transparent;
+      border-right: 5px solid transparent;
+      border-bottom: 10px solid var(--dourado);
+      top: -10px;
+      left: 0;
     }
 
-    .countdown-boxes {
-      display: flex;
-      justify-content: center;
-      gap: 28px;
-      flex-wrap: wrap;
+    .rocket.left { left: 10px; animation-delay: 0s; }
+    .rocket.right { right: 10px; animation-delay: 1.5s; }
+
+    @keyframes launch {
+      0% { bottom: 0; transform: scaleY(1); opacity: 1; }
+      70% { bottom: 200px; transform: scaleY(1.2); }
+      80% { transform: scaleY(0.8) scaleX(1.5); }
+      100% { bottom: 200px; transform: scale(0); opacity: 0; box-shadow: 0 0 20px 10px var(--dourado); }
     }
 
+    .countdown-container h2 { font-family: 'Cinzel', serif; font-size: 2.4rem; color: var(--texto); margin-bottom: 40px; }
+    .countdown-boxes { display: flex; justify-content: center; gap: 28px; flex-wrap: wrap; }
     .countdown-boxes .box {
       background: white;
       border: 1.5px solid var(--dourado);
@@ -276,210 +200,109 @@
       transition: transform 0.25s ease;
       font-family: 'Playfair Display', serif;
     }
-
-    .countdown-boxes .box::after {
-      content: "❤";
-      position: absolute;
-      top: 6px;
-      right: 6px;
-      font-size: 0.9rem;
-      color: var(--dourado);
-    }
-
-    .countdown-boxes .box:hover {
-      transform: translateY(-4px);
-    }
-
-    .countdown-boxes span {
-      display: block;
-      font-size: 2.8rem;
-      color: var(--dourado);
-      font-weight: 600;
-    }
-
-    .countdown-boxes small {
-      display: block;
-      margin-top: 6px;
-      font-size: 0.95rem;
-      color: var(--texto);
-      letter-spacing: 0.8px;
-    }
-
-    .countdown-note {
-      margin-top: 26px;
-      font-size: 1rem;
-      font-style: italic;
-      color: var(--texto);
-      opacity: 0.85;
-    }
+    .countdown-boxes .box::after { content: "❤"; position: absolute; top: 6px; right: 6px; font-size: 0.9rem; color: var(--dourado); }
+    .countdown-boxes .box:hover { transform: translateY(-4px); }
+    .countdown-boxes span { display: block; font-size: 2.8rem; color: var(--dourado); font-weight: 600; }
+    .countdown-boxes small { display: block; margin-top: 6px; font-size: 0.95rem; color: var(--texto); letter-spacing: 0.8px; }
+    .countdown-note { margin-top: 26px; font-size: 1rem; font-style: italic; color: var(--texto); opacity: 0.85; }
 
     /* MAPA */
-    .map-container {
-      margin-top: 40px;
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
-    }
+    .map-container { margin-top: 40px; border-radius: 18px; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.15); }
+    .map-container iframe { width: 100%; height: 380px; border: 0; }
+    .btn-maps { display: inline-block; margin-top: 30px; padding: 14px 38px; background: var(--dourado); color: white; text-decoration: none; border-radius: 30px; letter-spacing: 2px; font-size: 0.85rem; }
 
-    .map-container iframe {
-      width: 100%;
-      height: 380px;
-      border: 0;
-    }
-
-    .btn-maps {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 14px 38px;
-      background: var(--dourado);
-      color: white;
-      text-decoration: none;
-      border-radius: 30px;
-      letter-spacing: 2px;
-      font-size: 0.85rem;
-    }
-
-    footer {
-      padding: 45px 20px;
-      background: var(--bege);
+    /* HERO PIX */
+    .hero-pix {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      font-size: 0.85rem;
+      padding: 80px 20px;
+      border-radius: 20px;
+      margin: 50px auto;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+      background: linear-gradient(180deg, rgba(193,165,123,0.15), rgba(255,255,255,0.05));
+      max-width: 600px;
+      animation: pixFade 1.5s ease forwards;
+    }
+    .money-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.money-particles span {
+  position: absolute;
+  font-weight: bold;
+  opacity: 0;
+  animation: moneyFloat linear infinite;
+  color: #c1a57b; /* dourado */
+  user-select: none;
+}
+
+@keyframes moneyFloat {
+  0% {
+    transform: translateY(100%) rotate(0deg) scale(0.5);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120%) rotate(360deg) scale(1);
+    opacity: 0;
+  }
+}
+
+
+    @keyframes pixFade {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
+    .hero-pix-content { width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    .hero-pix-content h2 { font-family: 'Cinzel', serif; font-size: 2rem; color: var(--texto); margin-bottom: 20px; }
+    .hero-pix-content p { font-size: 1rem; margin-bottom: 25px; color: var(--texto); line-height: 1.6; }
+    .pix-box { display: flex; justify-content: center; align-items: center; gap: 15px; flex-wrap: wrap; margin-bottom: 15px; width: 100%; }
+    .pix-box span { font-family: 'roboto mono', serif; font-size: 1.2rem; padding: 10px 15px; border: 2px dashed var(--dourado); border-radius: 12px; background: #fff9f0; color: var(--texto); user-select: all; flex: 1 1 auto; text-align: center; }
+    .pix-box button { padding: 12px 25px; background: var(--dourado); color: #fff; border: none; border-radius: 30px; cursor: pointer; font-weight: 600; transition: all 0.3s ease; }
+    .pix-box button:hover { background: #a17b52; }
+    .pix-note { font-size: 0.9rem; font-style: italic; color: var(--texto); opacity: 0.85; max-width: 400px; margin: auto; }
+
+    /* HISTORIA */
+    .story { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; margin-top: 40px; }
+    .story-text { text-align: left; font-size: 1rem; }
+    .story-text p { margin-bottom: 18px; }
+    .story-slider { position: relative; width: 100%; height: 420px; overflow: hidden; border-radius: 22px; box-shadow: 0 20px 45px rgba(0,0,0,0.18); }
+    .story-slider img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.05); transition: opacity 1.2s ease, transform 1.8s ease; }
+    .story-slider img.active { opacity: 1; transform: scale(1); }
+
+    footer { padding: 45px 20px; background: var(--bege); text-align: center; font-size: 0.85rem; }
+
+    /* RESPONSIVO */
     @media (max-width: 768px) {
       nav ul { gap: 18px; font-size: 0.7rem; }
-      .hero h1 { font-size: 2.4rem; }
+      .hero h1 { font-size: 2rem; }
       .countdown-boxes { gap: 16px; }
       .countdown-boxes .box { width: 90px; padding: 18px 15px; }
       .countdown-container h2 { font-size: 2rem; }
       .map-container iframe { height: 300px; }
+      .hero-pix { padding: 50px 15px; margin: 30px 10px; }
+      .hero-pix-content h2 { font-size: 1.6rem; }
+      .hero-pix-content p { font-size: 0.95rem; }
+      .pix-box { flex-direction: column; gap: 12px; }
+      .pix-box span, .pix-box button { width: 100%; }
+      .story { grid-template-columns: 1fr; text-align: center; }
+      .story-text { text-align: center; }
+      .story-slider { height: 300px; }
+      .hero-date { font-size: 0.85rem; padding: 8px 18px; letter-spacing: 3px; }
     }
-
-    /* HISTÓRIA PREMIUM */
-.story {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 50px;
-  align-items: center;
-  margin-top: 40px;
-}
-
-.story-text {
-  text-align: left;
-  font-size: 1rem;
-}
-
-.story-text p {
-  margin-bottom: 18px;
-}
-
-.story-image {
-  position: relative;
-}
-
-.story-image img {
-  width: 100%;
-  border-radius: 20px;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.18);
-}
-
-@media (max-width: 768px) {
-  .story {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .story-text {
-    text-align: center;
-  }
-}
-
-/* HISTÓRIA COM SLIDER */
-.story {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 50px;
-  align-items: center;
-  margin-top: 40px;
-}
-
-.story-text {
-  text-align: left;
-  font-size: 1rem;
-}
-
-.story-text p {
-  margin-bottom: 18px;
-}
-
-.story-slider {
-  position: relative;
-  width: 100%;
-  height: 420px;
-  overflow: hidden;
-  border-radius: 22px;
-  box-shadow: 0 20px 45px rgba(0,0,0,0.18);
-}
-
-.story-slider img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transform: scale(1.05);
-  transition: opacity 1.2s ease, transform 1.8s ease;
-}
-
-.story-slider img.active {
-  opacity: 1;
-  transform: scale(1);
-}
-
-@media (max-width: 768px) {
-  .story {
-    grid-template-columns: 1fr;
-    text-align: center;
-  }
-
-  .story-text {
-    text-align: center;
-  }
-
-  .story-slider {
-    height: 300px;
-  }
-}
-
-.particles {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 4px;
-  height: 4px;
-  background: var(--dourado);
-  border-radius: 50%;
-  opacity: 0;
-  animation: explode 1s ease-out forwards;
-}
-
-@keyframes explode {
-  0% { transform: translate(0,0) scale(1); opacity: 1; }
-  25% { transform: translate(-20px,-20px) scale(0.5); opacity: 1; }
-  50% { transform: translate(20px,-25px) scale(0.5); opacity: 1; }
-  75% { transform: translate(-15px,-35px) scale(0.3); opacity: 1; }
-  100% { transform: translate(0,-40px) scale(0); opacity: 0; }
-}
-/* Tornar o iframe do Google Forms responsivo */
-.rsvp iframe {
-  width: 100%;
-  max-width: 640px; /* largura máxima opcional */
-  height: 80vh;      /* altura proporcional à tela */
-  border: 0;
-}
-
-
   </style>
 </head>
 
@@ -488,7 +311,7 @@
 <!-- NAVBAR -->
 <nav>
   <ul>
-    <li><a href="#inicio">INÍCIO</a></li>  
+    <li><a href="#inicio">INÍCIO</a></li>
     <li><a href="#evento">EVENTO</a></li>
     <li><a href="#historia">HISTÓRIA</a></li>
     <li><a href="#rsvp">PRESENÇA</a></li>
@@ -505,7 +328,6 @@
     <span style="left:70%"></span>
     <span style="left:85%"></span>
   </div>
-
   <div class="hero-content">
     <h1>Ighor & Giovanna</h1>
     <p class="hero-subtitle">VAMOS NOS CASAR</p>
@@ -513,25 +335,20 @@
   </div>
 </header>
 
-<!-- COUNTDOWN PREMIUM -->
+<!-- COUNTDOWN -->
 <section class="countdown-section" id="contador">
   <div class="countdown-container">
     <h2>Contagem Regressiva</h2>
-
     <div class="countdown-boxes">
       <div class="box"><span id="days">0</span><small>Dias</small></div>
       <div class="box"><span id="hours">0</span><small>Horas</small></div>
       <div class="box"><span id="minutes">0</span><small>Minutos</small></div>
       <div class="box"><span id="seconds">0</span><small>Segundos</small></div>
     </div>
-
     <p class="countdown-note">Não vemos a hora de comemorar com você!</p>
   </div>
-  <!-- Foguetes animados -->
-    <div class="rocket left"></div>
-    <div class="rocket right"></div>
-    <div class="particles"></div>
-  </div>
+  <div class="rocket left"></div>
+  <div class="rocket right"></div>
 </section>
 
 <!-- EVENTO -->
@@ -540,16 +357,10 @@
     <h2>Local da Festa</h2>
     <p><strong>07 de fevereiro de 2026</strong></p>
     <p>Recanto da Lagoa – Lagoa Santa / MG</p>
-
     <div class="map-container">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3712.1304972976776!2d-43.896122300000005!3d-19.658500599999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa67c4c53573ba9%3A0xc7ade2d028bf66e0!2sR.%20U%2C%201445%20-%20Recanto%20da%20Lagoa%2C%20Lagoa%20Santa%20-%20MG!5e0!3m2!1spt-BR!2sbr!5m2!1spt-BR!2sbr"
-        loading="lazy"></iframe>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3712.1304972976776!2d-43.896122300000005!3d-19.658500599999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa67c4c53573ba9%3A0xc7ade2d028bf66e0!2sR.%20U%2C%201445%20-%20Recanto%20da%20Lagoa%2C%20Lagoa%20Santa%20-%20MG!5e0!3m2!1spt-BR!2sbr!5m2!1spt-BR!2sbr" loading="lazy"></iframe>
     </div>
-
-    <a class="btn-maps" href="https://maps.app.goo.gl/GFHYEMzwZ3DSGpmw8" target="_blank">
-      COMO CHEGAR
-    </a>
+    <a class="btn-maps" href="https://maps.app.goo.gl/GFHYEMzwZ3DSGpmw8" target="_blank">COMO CHEGAR</a>
   </div>
 </section>
 
@@ -589,58 +400,89 @@
   </div>
 </section>
 
-
-
-<!-- RSVP -->
-<section class="light" id="rsvp">
-  <div class="rsvp">
-    <h2>Confirme sua Presença</h2>
-    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScEJrg4YP7jecSp-kbgk9cHRVB3SXo6-37Pk8UgsyPhmoUtbg/viewform?embedded=true"></iframe>
+<!-- HERO PIX -->
+<section class="hero-pix" id="rsvp">
+  <div class="money-particles"></div> <!-- PARTICULAS DE DINHEIRO -->
+  <div class="hero-pix-content">
+    <h2>Ajude os noivos</h2>
+    <p>Se desejar nos ajudar com a festa, a lua de mel e coisitas a mais para nossa casa, seu carinho fará toda a diferença!</p>
+    <div class="pix-box">
+      <span id="pix">123.456.789-00</span>
+      <button onclick="copyPix()">Copiar PIX</button>
+    </div>
+    <p class="pix-note"><strong>Nome:</strong> Giovanna Hosório Silva Valadares</p>
+    <p class="pix-note"><strong>Banco:</strong> Inter</p>
+    <p class="pix-note">Qualquer valor será recebido com muito amor ❤️ OBRIGADO</p>
   </div>
 </section>
 
+
+<!-- FOOTER -->
 <footer>
-  <p>Com carinho, Ighor & Giovanna</p>
+  Desenvolvido com ❤️ por Ighor & Giovanna – 2026
 </footer>
 
-<!-- JS CONTAGEM REGRESSIVA ANIMADA -->
 <script>
-const targetDate = new Date("2026-02-07T00:00:00").getTime();
+  // CONTAGEM REGRESSIVA
+  const countdownDate = new Date("Feb 7, 2026 00:00:00").getTime();
+  const daysEl = document.getElementById("days");
+  const hoursEl = document.getElementById("hours");
+  const minutesEl = document.getElementById("minutes");
+  const secondsEl = document.getElementById("seconds");
 
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = countdownDate - now;
 
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-function updateCountdown() {
-  const now = new Date().getTime();
-  const diff = targetDate - now;
-  if(diff <= 0) return;
+    daysEl.textContent = days;
+    hoursEl.textContent = hours;
+    minutesEl.textContent = minutes;
+    secondsEl.textContent = seconds;
+  }
 
-  const daysNum = Math.floor(diff / 86400000);
-  const hoursNum = Math.floor(diff / 3600000) % 24;
-  const minutesNum = Math.floor(diff / 60000) % 60;
-  const secondsNum = Math.floor(diff / 1000) % 60;
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
 
-  document.getElementById("days").innerText = daysNum;
-  document.getElementById("hours").innerText = hoursNum;
-  document.getElementById("minutes").innerText = minutesNum;
-  document.getElementById("seconds").innerText = secondsNum;
+  // COPIAR PIX
+  function copyPix() {
+    const pix = document.getElementById("pix").textContent;
+    navigator.clipboard.writeText(pix).then(() => alert("PIX copiado!"));
+  }
 
+  // SLIDER HISTORIA
+  let slides = document.querySelectorAll(".story-slider img");
+  let currentSlide = 0;
+  setInterval(() => {
+    slides[currentSlide].classList.remove("active");
+    currentSlide = (currentSlide+1)%slides.length;
+    slides[currentSlide].classList.add("active");
+  }, 4000);
+
+  const moneyContainer = document.querySelector('.money-particles');
+const symbols = ['$', '💰', '🪙']; // símbolos e emojis de dinheiro
+
+function createMoney() {
+  const span = document.createElement('span');
+  span.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+  span.style.left = Math.random() * 100 + '%';
+  span.style.fontSize = 12 + Math.random() * 24 + 'px';
+  span.style.animationDuration = 3 + Math.random() * 4 + 's';
+  moneyContainer.appendChild(span);
+
+  // Remove o span após a animação
+  setTimeout(() => {
+    span.remove();
+  }, parseFloat(span.style.animationDuration) * 1000);
 }
 
-updateCountdown();
-setInterval(updateCountdown, 1000);
+// Gera partículas a cada 200ms
+setInterval(createMoney, 200);
+
 </script>
-
-<script>
-const slides = document.querySelectorAll('#storySlider img');
-let currentSlide = 0;
-
-setInterval(() => {
-  slides[currentSlide].classList.remove('active');
-  currentSlide = (currentSlide + 1) % slides.length;
-  slides[currentSlide].classList.add('active');
-}, 4000);
-</script>
-
-
 </body>
 </html>
