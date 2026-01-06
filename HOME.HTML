@@ -309,9 +309,31 @@
     .story { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; margin-top: 40px; }
     .story-text { text-align: left; font-size: 1rem; }
     .story-text p { margin-bottom: 18px; }
-    .story-slider { position: relative; width: 100%; height: 420px; overflow: hidden; border-radius: 22px; box-shadow: 0 20px 45px rgba(0,0,0,0.18); }
-    .story-slider img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transform: scale(1.05); transition: opacity 1.2s ease, transform 1.8s ease; }
-    .story-slider img.active { opacity: 1; transform: scale(1); }
+    .story-slider {
+  position: relative;
+  width: 100%;
+  height: 420px; /* altura fixa */
+  overflow: hidden;
+  border-radius: 22px;
+  box-shadow: 0 20px 45px rgba(0,0,0,0.18);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.story-slider img {
+  position: absolute;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+.story-slider img.active {
+  opacity: 1;
+}
+
 
     footer { padding: 45px 20px; background: var(--bege); text-align: center; font-size: 0.85rem; }
 
